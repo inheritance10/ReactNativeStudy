@@ -4,6 +4,9 @@ import React, {Component} from "react";
 import { createAppContainer } from 'react-navigation';
 import {createStackNavigator} from "react-navigation-stack";
 
+import {createBottomTabNavigator} from "react-navigation-tabs";
+import DevAppContainer from "expo/build/environment/DevAppContainer";
+
 
 class App extends Component {
   render() {
@@ -17,7 +20,6 @@ class App extends Component {
     );
   }
 }
-
 class Detail extends Component {
   render() {
     return (
@@ -29,7 +31,33 @@ class Detail extends Component {
 }
 
 
-const AppNavigator = createStackNavigator({
+const HomeStack = createStackNavigator({
+  Home:{screen:App}
+});
+
+const DetailStack = createStackNavigator({
+  Detail: Detail
+})
+
+
+const AppNavigator = createBottomTabNavigator({
+  /*Home: {
+    screen: App
+  },
+  Detail: {
+    screen: Detail
+  }*/
+  //ya da
+
+  Home: HomeStack,
+  Detail: DetailStack
+})
+
+export default createAppContainer(AppNavigator);
+
+
+//STACK NAVIGATOR ***********
+/*const AppNavigator = createStackNavigator({
   Home: {
     screen: App
   },
@@ -38,11 +66,8 @@ const AppNavigator = createStackNavigator({
   }
 }, {
     initialRouteName: 'Home' //başlangıçta hangi sayfa gözüksün
-});
+});*/
 
-
-
-export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {
