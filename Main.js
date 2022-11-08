@@ -7,7 +7,7 @@ export default class index extends Component {
 
     render() {
         return(
-            <SafeAreaView style={{flex:1 ,alignItems: 'flex-start', justifyContent:'flex-start', marginTop:55}}>
+            <SafeAreaView>
                 <Welcome />
             </SafeAreaView>
         )
